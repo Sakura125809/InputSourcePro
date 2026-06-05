@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var feedbackVM: FeedbackVM!
     var indicatorWindowController: IndicatorWindowController!
     var statusItemController: StatusItemController!
+    var aiNativeInputTriggerManager: AINativeInputTriggerManager!
 
     func applicationDidFinishLaunching(_: Notification) {
         feedbackVM = FeedbackVM()
@@ -41,6 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             feedbackVM: feedbackVM,
             inputSourceVM: inputSourceVM
         )
+
+        aiNativeInputTriggerManager = AINativeInputTriggerManager(preferencesVM: preferencesVM)
         
         LaunchAtLogin.migrateIfNeeded()
         openPreferencesAtFirstLaunch()

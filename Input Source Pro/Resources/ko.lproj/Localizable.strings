@@ -221,6 +221,11 @@
 "Open Input Monitoring Settings, click the \"+\" button and add \"Input Source Pro\" to the list." = "입력 모니터링 설정을 열고 \"+\" 버튼을 클릭한 다음 목록에 \"Input Source Pro\"를 추가하세요.";
 "Disabled until permissions are granted" = "권한이 허용될 때까지 비활성화됨";
 
+"AI Native Input" = "AI Native Input";
+"Enable AI Native Input Trigger" = "@ 또는 / 뒤에서 영어로 전환";
+"AI Native Input Trigger Description" = "CJKV/R 입력 소스를 사용하는 중 @ 또는 / 를 입력하면 영어로 전환하고, Tab 또는 Space 를 누르면 이전 입력 소스로 복원합니다.";
+"AI Native Input Trigger Permission Description" = "이 기능에는 입력 모니터링 권한이 필요합니다.";
+
 "Settings Backup" = "설정 백업";
 "Export Settings" = "설정 내보내기";
 "Import Settings" = "설정 가져오기";

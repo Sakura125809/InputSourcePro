@@ -253,6 +253,7 @@ struct Preferences {
         static let isEnhancedModeEnabled = "isDetectSpotlightLikeApp"
         static let isCJKVFixEnabled = "isCJKVFixEnabled"
         static let cJKVFixStrategy = "cJKVFixStrategy"
+        static let isAINativeInputTriggerEnabled = "isAINativeInputTriggerEnabled"
 
         static let systemWideDefaultKeyboardId = "systemWideDefaultKeyboardId"
         static let isFunctionKeysEnabled = "isFunctionKeysEnabled"
@@ -331,6 +332,9 @@ struct Preferences {
 
     @UserDefault(Preferences.Key.cJKVFixStrategy)
     private var cJKVFixStrategyRaw = CJKVFixStrategy.defaultStrategy.rawValue
+
+    @UserDefault(Preferences.Key.isAINativeInputTriggerEnabled)
+    var isAINativeInputTriggerEnabled = false
 
     var cJKVFixStrategy: CJKVFixStrategy {
         get {

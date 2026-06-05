@@ -223,6 +223,11 @@
 "Open Input Monitoring Settings, click the \"+\" button and add \"Input Source Pro\" to the list." = "打開「輸入監控」設定，點擊「+」按鈕並將「Input Source Pro」加入列表。";
 "Disabled until permissions are granted" = "權限授予前將被停用";
 
+"AI Native Input" = "AI Native 輸入";
+"Enable AI Native Input Trigger" = "在 @ 或 / 後切換到英文";
+"AI Native Input Trigger Description" = "使用中日韓越俄等輸入法時，輸入 @ 或 / 後自動切換到英文，直到按下 Tab 或空格恢復之前的輸入法。";
+"AI Native Input Trigger Permission Description" = "此功能需要開啟「輸入監控」權限。";
+
 "Settings Backup" = "設定備份";
 "Export Settings" = "匯出設定";
 "Import Settings" = "匯入設定";

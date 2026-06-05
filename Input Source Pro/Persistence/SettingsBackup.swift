@@ -99,6 +99,7 @@ struct SettingsBackupPreferences: Codable {
     var isEnhancedModeEnabled: Bool?
     var isCJKVFixEnabled: Bool?
     var cJKVFixStrategy: CJKVFixStrategy?
+    var isAINativeInputTriggerEnabled: Bool?
     var isActiveWhenLongpressLeftMouse: Bool?
     var isActiveWhenSwitchApp: Bool?
     var isHideWhenSwitchAppWithForceKeyboard: Bool?
@@ -153,6 +154,7 @@ struct SettingsBackupPreferences: Codable {
         isEnhancedModeEnabled = preferences.isEnhancedModeEnabled
         isCJKVFixEnabled = preferences.isCJKVFixEnabled
         cJKVFixStrategy = preferences.cJKVFixStrategy
+        isAINativeInputTriggerEnabled = preferences.isAINativeInputTriggerEnabled
         isActiveWhenLongpressLeftMouse = preferences.isActiveWhenLongpressLeftMouse
         isActiveWhenSwitchApp = preferences.isActiveWhenSwitchApp
         isHideWhenSwitchAppWithForceKeyboard = preferences.isHideWhenSwitchAppWithForceKeyboard
@@ -206,6 +208,9 @@ struct SettingsBackupPreferences: Codable {
         if let isEnhancedModeEnabled { preferences.isEnhancedModeEnabled = isEnhancedModeEnabled }
         if let isCJKVFixEnabled { preferences.isCJKVFixEnabled = isCJKVFixEnabled }
         if let cJKVFixStrategy { preferences.cJKVFixStrategy = cJKVFixStrategy }
+        if let isAINativeInputTriggerEnabled {
+            preferences.isAINativeInputTriggerEnabled = isAINativeInputTriggerEnabled
+        }
         if let isActiveWhenLongpressLeftMouse { preferences.isActiveWhenLongpressLeftMouse = isActiveWhenLongpressLeftMouse }
         if let isActiveWhenSwitchApp { preferences.isActiveWhenSwitchApp = isActiveWhenSwitchApp }
         if let isHideWhenSwitchAppWithForceKeyboard {

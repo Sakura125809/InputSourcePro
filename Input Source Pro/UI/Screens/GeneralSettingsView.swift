@@ -7,6 +7,7 @@ struct GeneralSettingsView: View {
     @EnvironmentObject var indicatorVM: IndicatorVM
 
     @State var isDetectSpotlightLikeApp = false
+    @State var isShowAINativeInputPermissionTips = false
 
     var items: [PickerItem] {
         [PickerItem.empty]
@@ -81,6 +82,38 @@ struct GeneralSettingsView: View {
 
                             Spacer()
                         }
+                    }
+                    .padding()
+                }
+
+                SettingsSection(title: "AI Native Input") {
+                    HStack(alignment: .top) {
+                        Toggle("", isOn: aiNativeInputTriggerBinding)
+
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("Enable AI Native Input Trigger".i18n())
+
+                            Text("AI Native Input Trigger Description".i18n())
+                                .font(.system(size: 12))
+                                .opacity(0.8)
+
+                            if isShowAINativeInputPermissionTips || (preferencesVM.preferences.isAINativeInputTriggerEnabled && !permissionsVM.isInputMonitoringEnabled) {
+                                HStack {
+                                    Text("AI Native Input Trigger Permission Description".i18n())
+                                        .font(.system(size: 12))
+                                        .opacity(0.8)
+
+                                    Spacer()
+
+                                    Button("Open Input Monitoring Settings".i18n()) {
+                                        NSWorkspace.shared.openInputMonitoringPreferences()
+                                    }
+                                }
+                                .padding(.top, 4)
+                            }
+                        }
+
+                        Spacer()
                     }
                     .padding()
                 }
@@ -302,12 +335,34 @@ struct GeneralSettingsView: View {
         .onAppear(perform: disableIsDetectSpotlightLikeAppIfNeed)
     }
 
+    var aiNativeInputTriggerBinding: Binding<Bool> {
+        Binding(
+            get: { preferencesVM.preferences.isAINativeInputTriggerEnabled },
+            set: { onToggleAINativeInputTrigger($0) }
+        )
+    }
+
     func disableIsDetectSpotlightLikeAppIfNeed() {
         if !permissionsVM.isAccessibilityEnabled && preferencesVM.preferences.isEnhancedModeEnabled {
             preferencesVM.update {
                 $0.isEnhancedModeEnabled = false
             }
         }
+    }
+
+    func onToggleAINativeInputTrigger(_ isEnabled: Bool) {
+        preferencesVM.update {
+            $0.isAINativeInputTriggerEnabled = isEnabled
+        }
+
+        guard isEnabled, !permissionsVM.isInputMonitoringEnabled else {
+            isShowAINativeInputPermissionTips = false
+            return
+        }
+
+        isShowAINativeInputPermissionTips = true
+        permissionsVM.isInputMonitoringEnabled = PermissionsVM.checkInputMonitoring(prompt: true)
+        NSWorkspace.shared.openInputMonitoringPreferences()
     }
 
     func handleSystemWideDefaultKeyboardSelect(_ index: Int) {
